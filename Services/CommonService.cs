@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,17 @@ namespace KEServiceV2.Services
         public static DateTime GetDateWithoutMilliseconds(DateTime d)
         {
             return new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
+        }
+
+        public static string FormatDateTime(string inputDate)
+        {
+            //2022-01-15 11:38:29.657000
+            //return inputDate.ToString("yyyy'-'MM'-'dd hh':'mm':'ss'.'fff");
+
+            //DateTime dtFormatedDate = DateTime.ParseExact(inputDate, "yyyy'-'MM'-'dd hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
+
+            return Convert.ToDateTime(inputDate).ToString("yyyy'-'MM'-'dd hh':'mm':'ss'.'ffffff");
+                //dtFormatedDate.ToString();
         }
 
         public static void WriteErrorLog(Exception ex)
